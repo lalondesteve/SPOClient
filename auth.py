@@ -3,6 +3,13 @@ import requests
 
 class SPOAuth:
     def __init__(self, url, client_id, client_secret):
+        """
+        Sharepoint Online app authentication helper
+
+        :param url: SiteDomain url
+        :param client_id:
+        :param client_secret:
+        """
         self.url = url
         self.client_id = client_id
         self.client_secret = client_secret

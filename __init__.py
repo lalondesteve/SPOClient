@@ -1,1 +1,1 @@
-from client import SharepointClient
+from .client import SPOClient
