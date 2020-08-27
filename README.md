@@ -7,7 +7,9 @@ A simple python Sharepoint Online client to query Sharepoint API
 - python-dotenv
 
 ### Getting started
-to install, clone the repo
+to install, clone the repo or install via pip:
+`python -m pip install git+https://github.com/lalondesteve/SPOClient.git`
+
 
 You will need to have your Sharepoint app client_id and client_secret
 
