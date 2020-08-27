@@ -17,7 +17,7 @@ REQUIRES_PYTHON = '>=3.6.0'
 VERSION = '0.1.0'
 
 REQUIRED = [
-    'requests', 'python-dotenv'
+    'requests', 'wheel', 'python-dotenv'
 ]
 
 here = os.path.abspath(os.path.dirname(__file__))
