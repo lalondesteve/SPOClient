@@ -15,7 +15,7 @@ You will need to have your Sharepoint app client_id and client_secret
 
 [For more info : click here for MSFT doc](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/register-sharepoint-add-ins)
 
-create a .env file in the same folder with those variables :
+create a .env file in the root folder with those variables :
 ```
 SHAREPOINT_CLIENTID="12345yourclientid12345"
 SHAREPOINT_SECRET="12345yourclientsecret12345"
