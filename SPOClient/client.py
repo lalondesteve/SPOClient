@@ -1,7 +1,7 @@
 import os
 import requests
 
-from auth import SPOAuth
+from SPOClient.auth import SPOAuth
 from dotenv import load_dotenv
 
 # Initializing environment variables
