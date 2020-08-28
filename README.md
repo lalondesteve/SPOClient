@@ -13,7 +13,17 @@ to install, clone the repo or install via pip:
 
 You will need to have your Sharepoint app client_id and client_secret
 
-[For more info : click here for MSFT doc](https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/register-sharepoint-add-ins)
+[For more info : click here for MSFT doc](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs)
+To get only access to your site, you need to edit the url to look like this:
+https://{{yourtenant}}.sharepoint.com/sites/{{yoursite}}
+And use the following xml for permission:
+```
+<AppPermissionRequests AllowAppOnlyPolicy="true">  
+   <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" 
+    Right="FullControl" />
+</AppPermissionRequests>
+```
+[permission cheat sheet](https://medium.com/ng-sp/sharepoint-add-in-permission-xml-cheat-sheet-64b87d8d7600)
 
 create a .env file in the root folder with those variables :
 ```
