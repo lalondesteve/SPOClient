@@ -12,7 +12,7 @@ to install, clone the repo or install via pip:
 `python -m pip install git+https://github.com/lalondesteve/SPOClient.git`
 
 
-You will need to have your Sharepoint app client_id and client_secret
+You will need to have your Sharepoint app client_id and client_secret, if you don't click the link below:
 
 [For more info : click here for MSFT doc](https://docs.microsoft.com/en-us/sharepoint/dev/solution-guidance/security-apponly-azureacs)
 
@@ -29,14 +29,14 @@ And use the following xml for permission:
     Right="FullControl" />
 </AppPermissionRequests>
 ```
-[permission cheat sheet](https://medium.com/ng-sp/sharepoint-add-in-permission-xml-cheat-sheet-64b87d8d7600)
+[Bonus: permission cheat sheet](https://medium.com/ng-sp/sharepoint-add-in-permission-xml-cheat-sheet-64b87d8d7600)
 
 create a .env file in the root folder with those variables :
 
 ```
-SHAREPOINT_CLIENTID="12345yourclientid12345"
-SHAREPOINT_SECRET="12345yourclientsecret12345"
-SHAREPOINT_DOMAIN="https://{{yourtenant}}.sharepoint.com/sites/{{YourSharepointSite}}"
+SHAREPOINT_CLIENTID="{{YourClientID}}"
+SHAREPOINT_SECRET="{{YourClientSecret}}"
+SHAREPOINT_DOMAIN="https://{{yourtenant}}.sharepoint.com/sites/{{YourSite}}"
 ```
 
 Then you can use the client this way:
