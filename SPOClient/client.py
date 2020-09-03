@@ -15,6 +15,7 @@ class SPOClient:
     """
         Sharepoint Online App Authentication and requests sender
     """
+
     def __init__(self, url=URL, client_id=CLIENT_ID, client_secret=CLIENT_SECRET):
         """
         Interface to accelerate requests to a sharepoint online api
@@ -29,6 +30,7 @@ class SPOClient:
         self.client_id = client_id
         self.client_secret = client_secret
         self.auth = SPOAuth(self.url, self.client_id, self.client_secret)
+        self._type_value = 'application/json'
 
     def send_request(self, endpoint, filters=None, select=None, post=False):
         """
@@ -40,7 +42,7 @@ class SPOClient:
         :param post: bool, whether the request is a post or get
         :return: dict representation of json value
         """
-        headers = self._get_headers()
+        headers = self.headers
         if endpoint[0] == '/':
             endpoint = endpoint[1:]
         url = '/'.join([self.url, '_api/web', endpoint])
@@ -53,10 +55,19 @@ class SPOClient:
             return requests.post(url=url, headers=headers, params=payload).json()
         return requests.get(url=url, headers=headers, params=payload).json()
 
-    def _get_headers(self):
-        type_value = 'application/json;odata=verbose'
+    @property
+    def headers(self):
         return {
-            "Accept": type_value,
-            "Content-Type": type_value,
+            "Accept":        self._type_value,
+            "Content-Type":  self._type_value,
             "Authorization": f'Bearer {self.auth.token}'
-            }
+        }
+
+    @headers.setter
+    def headers(self, value):
+        if value == 'verbose':
+            self._type_value = 'application/json;odata=verbose'
+        elif value == 'normal':
+            self._type_value = 'application/json'
+        else:
+            raise ValueError('Headers can only be verbose or normal')
