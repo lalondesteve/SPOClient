@@ -1,1 +1,1 @@
-from .client import SPOClient
+from .client import Client

@@ -11,7 +11,7 @@ CLIENT_ID = os.getenv("SHAREPOINT_CLIENTID")
 CLIENT_SECRET = os.getenv("SHAREPOINT_SECRET")
 
 
-class SPOClient:
+class Client:
     """
         Sharepoint Online App Authentication and requests sender
     """

@@ -43,16 +43,16 @@ Then you can use the client this way:
 
 
 ```
-from SPOClient import SPOClient
-s = SPOClient()
+import SPOClient
+sp = SPOClient.Client()
 # to query all the items Title and Id
 endpoint = "/lists/getbytitle('MyList')/items"
 select = 'Title,Id'
-r = s.send_request(endpoint, select=select)
+r = sp.send_request(endpoint, select=select)
 for i in r['d']['results']:
     print(i['Id'], i['Title'])
 ```
-For now, only Put and Get methods are implemented
+For now, only Post and Get methods are implemented
 
 For more information on api endpoints:
 
