@@ -32,10 +32,11 @@ class Client:
         self.auth = SPOAuth(self.url, self.client_id, self.client_secret)
         self._type_value = 'application/json'
 
-    def send_request(self, endpoint, filters=None, select=None, post=False):
+    def send_request(self, endpoint, data=None, filters=None, select=None, post=False):
         """
         Builds a request and returns response.json
 
+        :param data: dict of data to send as raw json
         :param endpoint: string e.g. '/lists/getbytitle('MyList')/items
         :param filters: string ODATA filter value
         :param select: string ODATA select value
@@ -52,7 +53,7 @@ class Client:
         if select:
             payload['$select'] = select
         if post:
-            return requests.post(url=url, headers=headers, params=payload).json()
+            return requests.post(url=url, headers=headers, params=payload, json=data).json()
         return requests.get(url=url, headers=headers, params=payload).json()
 
     @property
