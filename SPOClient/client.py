@@ -1,5 +1,6 @@
 import os
 import requests
+import logging
 
 from SPOClient.auth import SPOAuth
 from dotenv import load_dotenv
@@ -15,6 +16,7 @@ class Client:
     """
         Sharepoint Online App Authentication and requests sender
     """
+    logging.getLogger(f"{__name__}.spoclient")
 
     def __init__(self, url=URL, client_id=CLIENT_ID, client_secret=CLIENT_SECRET):
         """
@@ -52,6 +54,7 @@ class Client:
             payload['$filter'] = filters
         if select:
             payload['$select'] = select
+        logging.debug(f'Send request to endpoint {endpoint}?{payload} with data: {data}')
         if post:
             return requests.post(url=url, headers=headers, params=payload, json=data).json()
         return requests.get(url=url, headers=headers, params=payload).json()

@@ -53,5 +53,5 @@ class SPOAuth:
         auth_url = f'https://accounts.accesscontrol.windows.net/{self.realm}/tokens/OAuth/2'
         req = self.get_request()
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        response = requests.post(url=auth_url,headers=headers,data=req)
+        response = requests.post(url=auth_url, headers=headers, data=req)
         return response.json()
