@@ -17,8 +17,12 @@ class List:
 
     @property
     def items(self):
-        endpoint = self.endpoint + "/items"
-        return self.client.send_request(endpoint)
+        try:
+            endpoint = self.endpoint + "/items"
+            select = 'Title,Id'
+        except Exception:
+            raise
+        return self.client.send_request(endpoint, select=select)
 
     @property
     def item(self):

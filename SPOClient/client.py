@@ -20,12 +20,12 @@ class Client:
 
     def __init__(self, url=URL, client_id=CLIENT_ID, client_secret=CLIENT_SECRET):
         """
-        Interface to accelerate requests to a sharepoint online api
+        Interface to request sharepoint online api via app authentication
         to get client_id and client_secret, consult:
         https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/register-sharepoint-add-ins
 
         :param url: string complete url to your site https://contoso.sharepiont.com/sites/ContosoSite
-        :param client_id: string of authorized sharepoint app
+        :param client_id: string
         :param client_secret: string
         """
         self.url = url
@@ -34,9 +34,9 @@ class Client:
         self.auth = SPOAuth(self.url, self.client_id, self.client_secret)
         self._type_value = 'application/json'
 
-    def send_request(self, endpoint, data=None, filters=None, select=None, post=False):
+    def send_request(self, endpoint, data=None, filters=None, select=None, post=False) -> dict:
         """
-        Builds a request and returns response.json
+        Builds a request and returns values as a dict
 
         :param data: dict of data to send as raw json
         :param endpoint: string e.g. '/lists/getbytitle('MyList')/items
